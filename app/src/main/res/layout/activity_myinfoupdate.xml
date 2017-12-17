@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#000080"
+    tools:context="com.example.seol.sos.MyinfoActivity">
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="210dp"
+        android:layout_marginTop="20dp"
+        android:background="#FFFFFF"
+        android:columnCount="2"
+        android:orientation="vertical"
+        android:rowCount="5">
+
+        <TextView
+            android:layout_width="60dp"
+            android:layout_height="30dp"
+            android:gravity="center_vertical"
+            android:paddingStart="5dp"
+            android:text="이름"
+            android:textColor="#000080" />
+
+        <TextView
+            android:layout_width="60dp"
+            android:layout_height="30dp"
+            android:gravity="center_vertical"
+            android:paddingStart="5dp"
+            android:text="생년월일"
+            android:textColor="#000080" />
+
+        <TextView
+            android:layout_width="60dp"
+            android:layout_height="30dp"
+            android:gravity="center_vertical"
+            android:paddingStart="5dp"
+            android:text="성별"
+            android:textColor="#000080" />
+
+        <TextView
+            android:layout_width="60dp"
+            android:layout_height="30dp"
+            android:gravity="center_vertical"
+            android:paddingStart="5dp"
+            android:text="장애유형"
+            android:textColor="#000080" />
+
+        <TextView
+            android:layout_width="60dp"
+            android:layout_height="30dp"
+            android:gravity="center_vertical"
+            android:paddingStart="5dp"
+            android:text="보장구"
+            android:textColor="#000080" />
+
+        <EditText
+            android:id="@+id/userNameUpdate"
+             />
+
+        <EditText
+            android:id="@+id/birthdayUpdate"
+             />
+
+        <RadioGroup
+            android:id="@+id/genderUpdate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/male"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="남자" />
+
+            <RadioButton
+                android:id="@+id/female"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="여자" />
+        </RadioGroup>
+
+        <EditText
+            android:id="@+id/typeOfDisableUpdate"
+            android:hint="~장애 ~급" />
+
+        <RadioGroup
+            android:id="@+id/typeOfZimmerFrameUpdate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/manualWheelChair"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="수동휠체어" />
+
+            <RadioButton
+                android:id="@+id/autoWheelChair"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="전동휠체어" />
+
+            <RadioButton
+                android:id="@+id/walker"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="워커/목발" />
+        </RadioGroup>
+
+    </GridLayout>
+
+    <Button
+        android:id="@+id/saveMyInfoButton"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="70dp"
+        android:background="@drawable/save"
+        android:visibility="visible" />
+
+</LinearLayout>

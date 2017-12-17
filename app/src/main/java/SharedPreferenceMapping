@@ -1,0 +1,8 @@
+SharedPreference 맵핑 정의서
+
+shakingUse : 흔들기여부 (Y/N)
+userName : 이름
+userBirthday : 생년원일
+gender : 성별
+typeOfDisable : 장애유형
+frame : 보장구 유형
