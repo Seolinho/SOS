@@ -1,6 +1,7 @@
 package com.example.seol.sos;
 
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
@@ -19,11 +20,12 @@ public class IntroActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_intro);
+        //액션바 설정하기//
+        //액션바 타이틀 변경하기
+        getSupportActionBar().setTitle("SOS 헬프 앱");
+        //액션바 배경색 변경
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(0xFF339999));
 
-
-
-        final ActionBar actionBar = getSupportActionBar();
-        actionBar.hide();
 
         Handler mHandler = new Handler();
         mHandler.postDelayed(new loadingRun(), 2500);

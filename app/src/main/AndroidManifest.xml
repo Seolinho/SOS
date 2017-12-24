@@ -21,6 +21,9 @@
             android:name="com.kakao.sdk.AppKey"
             android:value="@string/kakao_app_key" />
 
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyAPNSf66j1fMqWB8LoGLFpTZyXm5MU1k0s" />
         <activity android:name=".IntroActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -34,11 +37,35 @@
 
         <activity android:name=".LoginActivity" />
         <activity android:name=".KakaoSignupActivity" />
-        <activity android:name=".SettingActivity" />
+        <activity android:name=".SettingActivity"
+            android:label="SettingActivity">
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value=".MainActivity"
+            />
+        </activity>
+
         <activity android:name=".VersionAskActivity" />
-        <activity android:name=".MyinfoActivity" />
-        <activity android:name=".UpdateMyInfo" />
-        <activity android:name=".ProtectorCallActivity"/>
+        <activity android:name=".MyinfoActivity"
+                    android:label="MyinfoActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".SettingActivity"
+            />
+        </activity>
+        <activity android:name=".UpdateMyInfo" >
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value=".MyinfoActivity"
+            />
+        </activity>
+        <activity android:name=".ProtectorCallActivity"
+            android:label="ProtectorCallActivity">
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value=".SettingActivity"
+            />
+        </activity>
     </application>
 
     <uses-sdk android:minSdkVersion="3" />

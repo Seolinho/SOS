@@ -2,9 +2,12 @@ package com.example.seol.sos;
 
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.support.v4.app.NavUtils;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -24,6 +27,14 @@ public class UpdateMyInfo extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_myinfoupdate);
+
+        //액션바 설정하기//
+        //액션바 타이틀 변경하기
+        getSupportActionBar().setTitle("SOS 헬프 앱");
+        //액션바 배경색 변경
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(0xFF339999));
+        //홈버튼 표시
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         pref = getSharedPreferences("pref",MODE_PRIVATE);
         editor = pref.edit();
@@ -96,5 +107,15 @@ public class UpdateMyInfo extends AppCompatActivity {
 
             }
         });
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        switch (item.getItemId()){
+            case android.R.id.home:
+                NavUtils.navigateUpFromSameTask(this);
+                return true;
+        }
+        defalut:
+        return super.onOptionsItemSelected(item);
     }
 }
