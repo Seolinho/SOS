@@ -76,7 +76,6 @@ public class MainActivity extends AppCompatActivity
             .setFastestInterval(FASTEST_UPDATE_INTERVAL_MS);
 
     Intent shakingService;
-    Intent nomal;
 
 
     @Override
@@ -89,7 +88,6 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Log.d(TAG, "onCreate");
         mActivity = this;
-        nomal =new Intent(this, NormalActivity.class);
 
         mGoogleApiClient = new GoogleApiClient.Builder(this)
                 .addConnectionCallbacks(this)
