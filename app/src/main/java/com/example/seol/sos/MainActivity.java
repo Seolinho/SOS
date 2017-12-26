@@ -102,6 +102,11 @@ public class MainActivity extends AppCompatActivity
         mapFragment.getMapAsync(this);
 
         ActivityCompat.requestPermissions(this ,new String[]{Manifest.permission.SEND_SMS},1);
+        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION},2);
+        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION},3);
+        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_WIFI_STATE},4);
+        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.INTERNET},5);
+
         shakingService = new Intent(this, ShakingSensor.class);
         SharedPreferences pref = getSharedPreferences("pref",MODE_PRIVATE);
         String shakingOption = pref.getString("shakingUse","N");
