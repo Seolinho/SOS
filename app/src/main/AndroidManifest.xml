@@ -36,6 +36,7 @@
         <service android:name=".ShakingSensor" />
 
         <activity android:name=".LoginActivity" />
+        <activity android:name=".NormalActivity"/>
         <activity android:name=".KakaoSignupActivity" />
         <activity android:name=".SettingActivity"
             android:label="SettingActivity">
