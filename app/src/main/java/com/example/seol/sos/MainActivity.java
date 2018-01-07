@@ -25,7 +25,10 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -42,16 +45,21 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.kakao.auth.StringSet;
 
 import java.io.IOException;
+import java.security.Permission;
 import java.util.List;
 import java.util.Locale;
+
+import static java.security.AccessController.getContext;
 
 public class MainActivity extends AppCompatActivity
         implements OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener,
         LocationListener {
 
+    private static Permission showDialogForPermission;
     private GoogleApiClient mGoogleApiClient = null;
     private GoogleMap mGoogleMap = null;
     private Marker currentMarker = null;
@@ -62,6 +70,7 @@ public class MainActivity extends AppCompatActivity
     private static final int UPDATE_INTERVAL_MS = 1000;  // 1초
     private static final int FASTEST_UPDATE_INTERVAL_MS = 500; // 0.5초
 
+
     private AppCompatActivity mActivity;
     boolean askPermissionOnceAgain = false;
     boolean mRequestingLocationUpdates = false;
@@ -69,6 +78,7 @@ public class MainActivity extends AppCompatActivity
     boolean mMoveMapByUser = true;
     boolean mMoveMapByAPI = true;
     LatLng currentPosition;
+
 
     LocationRequest locationRequest = new LocationRequest()
             .setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
@@ -81,12 +91,15 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON,
                 WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
-        setContentView(R.layout.activity_main);
         Log.d(TAG, "onCreate");
+
+      //  getContext().checkPermission(MainActivity.showDialogForPermission); //위치정보 퍼미션 허용 팝업 됐다 안됐다 함!!!!!
+
         mActivity = this;
 
         mGoogleApiClient = new GoogleApiClient.Builder(this)
@@ -100,8 +113,8 @@ public class MainActivity extends AppCompatActivity
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
-        ActivityCompat.requestPermissions(this ,new String[]{Manifest.permission.SEND_SMS},1);
-
+        ActivityCompat.requestPermissions(this ,new String[]{Manifest.permission.SEND_SMS,Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.ACCESS_COARSE_LOCATION},1);
+        
         shakingService = new Intent(this, ShakingSensor.class);
         SharedPreferences pref = getSharedPreferences("pref",MODE_PRIVATE);
         String shakingOption = pref.getString("shakingUse","N");
@@ -131,7 +144,7 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
-       /* Button sosBtn = (Button) findViewById(R.id.sosButton);
+        Button sosBtn = (Button) findViewById(R.id.sosButton);
         sosBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -140,7 +153,7 @@ public class MainActivity extends AppCompatActivity
                 alert.setMessage("SOS문자가 전송되었습니다.");
                 alert.show();
             }
-        });*/
+        });
 
 
     }
@@ -263,8 +276,11 @@ public class MainActivity extends AppCompatActivity
             }
         });
     }
-
-
+//    static String markerTitle;
+//    public void setPositionText(){
+//        ((TextView) findViewById(R.id.place)).setText(markerTitle);
+//        Log.d("Limky 2",markerTitle);
+//    }
     @Override
     public void onLocationChanged(Location location) {
 
@@ -275,6 +291,8 @@ public class MainActivity extends AppCompatActivity
         Log.d(TAG, "onLocationChanged : ");
 
         String markerTitle = getCurrentAddress(currentPosition);
+
+        Log.d("Limky",markerTitle);
         String markerSnippet = "위도:" + String.valueOf(location.getLatitude())
                 + " 경도:" + String.valueOf(location.getLongitude());
 
@@ -282,6 +300,10 @@ public class MainActivity extends AppCompatActivity
         setCurrentLocation(location, markerTitle, markerSnippet);
 
         mCurrentLocatiion = location;
+
+        //위치정보 반영
+        ((TextView) findViewById(R.id.place)).setText(markerTitle);
+    //    setPositionText();
     }
 
 
@@ -329,9 +351,10 @@ public class MainActivity extends AppCompatActivity
 
                 if (hasFineLocationPermission == PackageManager.PERMISSION_DENIED) {
 
-                    ActivityCompat.requestPermissions(mActivity,
-                            new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION},
-                            PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION);
+                  //  ActivityCompat.requestPermissions(mActivity,
+                 //           new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION},
+                 //           PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION);
+                    ActivityCompat.requestPermissions(this ,new String[]{Manifest.permission.ACCESS_FINE_LOCATION},PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION);
 
                 } else {
 
@@ -404,6 +427,7 @@ public class MainActivity extends AppCompatActivity
             Address address = addresses.get(0);
             return address.getAddressLine(0).toString();
         }
+
 
     }
 

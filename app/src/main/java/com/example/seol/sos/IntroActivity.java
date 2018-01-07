@@ -32,14 +32,21 @@ public class IntroActivity extends AppCompatActivity {
     }
 
 
-    class loadingRun implements Runnable
+    class loadingRun implements Runnable //쓰레드 만드는것
     {
         @Override
         public void run(){
-            Intent intent = new Intent(getApplicationContext(), NormalActivity.class);
-            startActivity(intent);
-            Intent intentMain = new Intent(getApplicationContext(), LoginActivity.class);
-            startActivity(intentMain);
+
+            SharedPreference sharedUtil = new SharedPreference();
+
+            boolean login= sharedUtil.getValue(getApplicationContext(),"login",true);
+            if(login=false) {
+                Intent intentMain = new Intent(getApplicationContext(), LoginActivity.class);
+                startActivity(intentMain);
+            }else{
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
+            }
 
             finish();
 

@@ -20,7 +20,7 @@ public class SendTextMessageService {
         List<String> receiverNumber = new ArrayList<>();
         //아마도 receiverNumner = DB연결클래스.getReciverList()
 
-        receiverNumber.add("010-7242-9324");
+        receiverNumber.add("010-6791-1657");
         String msg = "테스트입니다.";
 
         // 받은 정보에 따라

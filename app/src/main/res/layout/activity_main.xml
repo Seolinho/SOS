@@ -1,34 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#000080"
-    tools:context="com.example.seol.sos.MainActivity">
-    <fragment
-        android:id="@+id/map"
+    tools:context="com.example.seol.sos.MainActivity"
+    android:orientation="vertical"
+    >
+
+
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="350dp"
-        class="com.google.android.gms.maps.MapFragment" />
+        android:background="#000080">
+        <fragment
+            android:id="@+id/map"
+            android:layout_width="match_parent"
+            android:layout_height="350dp"
+            class="com.google.android.gms.maps.MapFragment" />
+
+    </RelativeLayout>
+
 
     <TextView
         android:id="@+id/place"
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/map"
         android:background="#FFFFFF"
         android:gravity="center"
-        android:text="(내 위치)/(가까운 구조기관)" />
-
-    <Button
-        android:id="@+id/sosButton"
-        android:layout_width="200dp"
-        android:layout_height="50dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_gravity="center"
-        android:layout_marginBottom="20dp"
-        android:background="@drawable/sosbutton"
         android:visibility="visible" />
-</RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:layout_weight="1"
+        android:gravity="center">
+        <Button
+            android:id="@+id/sosButton"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:background="@drawable/sosbutton"
+            android:visibility="visible" />
+    </LinearLayout>
+
+</LinearLayout>

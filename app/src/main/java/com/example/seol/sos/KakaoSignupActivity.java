@@ -60,6 +60,10 @@ public class KakaoSignupActivity extends Activity {
                 String kakaoID = String.valueOf(userProfile.getId()); // userProfile에서 ID값을 가져옴
                 String kakaoNickname = userProfile.getNickname();     // Nickname 값을 가져옴
                 String url = String.valueOf(userProfile.getProfileImagePath());
+                //여기서 SharedPreferences로 로그인 여부 코딩
+                //SharedUtil 객체생성
+                SharedPreference sharedUtil = new SharedPreference();
+                sharedUtil.put(getApplicationContext(),"login",true);
 
                 Logger.d("UserProfile : " + userProfile);
                 Log.d("kakao", "==========================");
