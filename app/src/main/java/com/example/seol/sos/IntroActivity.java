@@ -37,7 +37,7 @@ public class IntroActivity extends AppCompatActivity {
         @Override
         public void run(){
 
-            SharedPreference sharedUtil = new SharedPreference();
+            /*SharedPreference sharedUtil = new SharedPreference();
 
             boolean login= sharedUtil.getValue(getApplicationContext(),"login",true);
             if(login=false) {
@@ -46,7 +46,9 @@ public class IntroActivity extends AppCompatActivity {
             }else{
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intent);
-            }
+            }*/
+            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+            startActivity(intent);
 
             finish();
 
