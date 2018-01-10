@@ -1,6 +1,7 @@
 package com.example.seol.sos;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
@@ -14,7 +15,7 @@ import android.support.v7.app.AppCompatActivity;
 
 public class IntroActivity extends AppCompatActivity {
 
-
+    private SharedPreferences pref;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -37,18 +38,17 @@ public class IntroActivity extends AppCompatActivity {
         @Override
         public void run(){
 
-            /*SharedPreference sharedUtil = new SharedPreference();
+            SharedPreferences pref = getSharedPreferences("pref",MODE_PRIVATE);
+            boolean login = pref.getBoolean("login",true);
 
-            boolean login= sharedUtil.getValue(getApplicationContext(),"login",true);
-            if(login=false) {
+
+            if(login==false) {
                 Intent intentMain = new Intent(getApplicationContext(), LoginActivity.class);
                 startActivity(intentMain);
-            }else{
+            }else {
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intent);
-            }*/
-            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-            startActivity(intent);
+            }
 
             finish();
 

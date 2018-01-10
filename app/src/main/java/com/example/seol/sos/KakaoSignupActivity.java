@@ -2,6 +2,7 @@ package com.example.seol.sos;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -21,7 +22,8 @@ public class KakaoSignupActivity extends Activity {
      * Main으로 넘길지 가입 페이지를 그릴지 판단하기 위해 호출되는 액티비티.
      * @param savedInstanceState 기존 session 정보가 저장된 객체
      */
-
+    private SharedPreferences.Editor editor;
+    private SharedPreferences pref;
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,8 +64,14 @@ public class KakaoSignupActivity extends Activity {
                 String url = String.valueOf(userProfile.getProfileImagePath());
                 //여기서 SharedPreferences로 로그인 여부 코딩
                 //SharedUtil 객체생성
-                SharedPreference sharedUtil = new SharedPreference();
-                sharedUtil.put(getApplicationContext(),"login",true);
+                /*SharedPreference sharedUtil = new SharedPreference();
+                sharedUtil.put(getApplicationContext(),"login",true);*/
+                pref = getSharedPreferences("pref",MODE_PRIVATE);
+                editor = pref.edit();
+                boolean login = true;
+                editor.putBoolean("login",login);
+                editor.commit();
+
 
                 Logger.d("UserProfile : " + userProfile);
                 Log.d("kakao", "==========================");

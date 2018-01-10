@@ -20,7 +20,7 @@ import android.widget.RadioGroup;
 
 public class UpdateMyInfo extends AppCompatActivity {
 
-    private SharedPreferences pref;
+        private SharedPreferences pref;
     private SharedPreferences.Editor editor;
 
     @Override
@@ -52,7 +52,7 @@ public class UpdateMyInfo extends AppCompatActivity {
         final String userBirthdayText = pref.getString("userBirthday", "1900-01-01");
         String genderText = pref.getString("gender", "");
         String typeOfFrameText = pref.getString("frame","");
-        String typeOfDisableText = pref.getString("typeOfDisable", "테스트");
+        String typeOfDisableText = pref.getString("typeOfDisable", "");
 
         final EditText userName = (EditText) findViewById(R.id.userNameUpdate);
         final EditText userBirthday = (EditText) findViewById(R.id.birthdayUpdate);

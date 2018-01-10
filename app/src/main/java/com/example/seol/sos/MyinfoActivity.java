@@ -24,7 +24,7 @@ public class MyinfoActivity extends AppCompatActivity {
         String userBirthdayText = pref.getString("userBirthday", "1900-01-01");
         String genderText = pref.getString("gender", "");
         String typeOfFrameText = pref.getString("frame","");
-        String typeOfDisableText = pref.getString("typeOfDisable", "테스트");
+        String typeOfDisableText = pref.getString("typeOfDisable", "");
         TextView userName = (TextView) findViewById(R.id.userName);
         TextView userBirthday = (TextView) findViewById(R.id.birthday);
         TextView typeOfDisable = (TextView) findViewById(R.id.typeOfDisable);

@@ -58,7 +58,8 @@ public class MainActivity extends AppCompatActivity
         implements OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener,
         LocationListener {
-
+    private SharedPreferences pref;
+    private SharedPreferences.Editor editor;
     private static Permission showDialogForPermission;
     private GoogleApiClient mGoogleApiClient = null;
     private GoogleMap mGoogleMap = null;
@@ -303,6 +304,10 @@ public class MainActivity extends AppCompatActivity
 
         //위치정보 반영
         ((TextView) findViewById(R.id.place)).setText(markerTitle);
+        pref = getSharedPreferences("pref",MODE_PRIVATE);
+        editor = pref.edit();
+        editor.putString("position",markerTitle); //현재위치 자체 DB저장
+        editor.commit();
     //    setPositionText();
     }
 
