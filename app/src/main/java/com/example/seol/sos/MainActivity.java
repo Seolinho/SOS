@@ -65,6 +65,7 @@ public class MainActivity extends AppCompatActivity
     private GoogleMap mGoogleMap = null;
     private Marker currentMarker = null;
 
+    public TextView textView;
     private static final String TAG = "googlemap_example";
     private static final int GPS_ENABLE_REQUEST_CODE = 2001;
     private static final int PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 2002;
@@ -94,6 +95,8 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        textView=findViewById(R.id.place);
+
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON,
                 WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
@@ -117,6 +120,7 @@ public class MainActivity extends AppCompatActivity
         ActivityCompat.requestPermissions(this ,new String[]{Manifest.permission.SEND_SMS,Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.ACCESS_COARSE_LOCATION},1);
         
         shakingService = new Intent(this, ShakingSensor.class);
+
         SharedPreferences pref = getSharedPreferences("pref",MODE_PRIVATE);
         String shakingOption = pref.getString("shakingUse","N");
         //옵션이 켜져 있으면 앱 시작과 동시에 흔들기 서비스 실행
@@ -149,8 +153,16 @@ public class MainActivity extends AppCompatActivity
         sosBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SendTextMessageService sendSMS = new SendTextMessageService();
-                sendSMS.sendSMS();
+                SharedPreferences pref;
+                SharedPreferences.Editor editor;
+
+              /* pref = getSharedPreferences("pref",MODE_PRIVATE);
+                editor = pref.edit();
+                editor.putString("position",ShakingSensor.markerTitle); //현재위치 자체 DB저장
+                editor.commit();
+                Log.d("String",ShakingSensor.markerTitle);*/
+                SendTextMessageService sendSMS = new SendTextMessageService(getApplicationContext());
+                sendSMS.sendSMS(1);
                 alert.setMessage("SOS문자가 전송되었습니다.");
                 alert.show();
             }
@@ -291,23 +303,20 @@ public class MainActivity extends AppCompatActivity
 
         Log.d(TAG, "onLocationChanged : ");
 
-        String markerTitle = getCurrentAddress(currentPosition);
+        ShakingSensor.markerTitle = getCurrentAddress(currentPosition);
 
-        Log.d("Limky",markerTitle);
+        Log.d("Limky",ShakingSensor.markerTitle);
         String markerSnippet = "위도:" + String.valueOf(location.getLatitude())
                 + " 경도:" + String.valueOf(location.getLongitude());
 
         //현재 위치에 마커 생성하고 이동
-        setCurrentLocation(location, markerTitle, markerSnippet);
+        setCurrentLocation(location,ShakingSensor.markerTitle, markerSnippet);
 
         mCurrentLocatiion = location;
 
         //위치정보 반영
-        ((TextView) findViewById(R.id.place)).setText(markerTitle);
-        pref = getSharedPreferences("pref",MODE_PRIVATE);
-        editor = pref.edit();
-        editor.putString("position",markerTitle); //현재위치 자체 DB저장
-        editor.commit();
+        textView.setText(ShakingSensor.markerTitle);
+
     //    setPositionText();
     }
 

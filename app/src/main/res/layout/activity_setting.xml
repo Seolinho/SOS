@@ -23,6 +23,7 @@
             android:textStyle="bold"
             android:gravity="center"/>
         <Switch
+            android:id="@+id/locationTime"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"/>
     </LinearLayout>
@@ -37,10 +38,12 @@
             android:background="#FFFFFF"
             android:orientation="vertical">
             <RadioButton
+                android:id="@+id/m30"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="30분" />
             <RadioButton
+                android:id="@+id/m60"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="1시간"/>

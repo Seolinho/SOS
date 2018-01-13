@@ -39,10 +39,10 @@ public class IntroActivity extends AppCompatActivity {
         public void run(){
 
             SharedPreferences pref = getSharedPreferences("pref",MODE_PRIVATE);
-            boolean login = pref.getBoolean("login",true);
+            boolean login = pref.getBoolean("login",false);
 
 
-            if(login==false) {
+            if(!login) {
                 Intent intentMain = new Intent(getApplicationContext(), LoginActivity.class);
                 startActivity(intentMain);
             }else {

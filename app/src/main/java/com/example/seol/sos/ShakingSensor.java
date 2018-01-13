@@ -2,6 +2,7 @@ package com.example.seol.sos;
 
 import android.app.Service;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -9,6 +10,9 @@ import android.hardware.SensorManager;
 import android.os.IBinder;
 import android.util.Log;
 import android.widget.Toast;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * Created by Seol on 2017-12-17.
@@ -29,9 +33,10 @@ public class ShakingSensor extends Service implements SensorEventListener {
     private static final int DATA_Y = SensorManager.DATA_Y;
     private static final int DATA_Z = SensorManager.DATA_Z;
     private int cnt = 0;
+    public static String markerTitle="";
     private SensorManager sensorManager;
     private Sensor accelerormeterSensor;
-
+    private Timer timer;
     @Override
     public IBinder onBind(Intent intent) {
         // TODO Auto-generated method stub
@@ -51,14 +56,37 @@ public class ShakingSensor extends Service implements SensorEventListener {
     }
 
     @Override
-    public void onStart(Intent intent, int startId) {
-        // TODO Auto-generated method stub
-        super.onStart(intent, startId);
-        Log.i("MyServiceIntent", "Service is started");
+    public int onStartCommand(Intent intent, int flags, int startId) {
 
-        if (accelerormeterSensor != null)
+
+        SharedPreferences pref = getSharedPreferences("pref",MODE_PRIVATE);
+        String shakingOption = pref.getString("shakingUse","N");
+        if (accelerormeterSensor != null&&shakingOption.equals("Y"))
             sensorManager.registerListener(this, accelerormeterSensor,
                     SensorManager.SENSOR_DELAY_GAME);
+        boolean loctionOn =pref.getBoolean("locationOn",false);
+        if (loctionOn){
+            Log.d("timer",loctionOn+"");
+            long interval =pref.getLong("Interval",1800000);
+            TimerTask timerTask = new TimerTask() {
+                @Override
+                public void run() {
+
+                    SendTextMessageService sms = new SendTextMessageService(getApplicationContext());
+                    sms.sendSMS(2);
+                }
+            };
+            if (timer==null){
+                timer = new Timer();
+                timer.schedule(timerTask,0,interval);
+            }
+
+        } else {
+            if (timer!=null){
+                timer.cancel();
+            }
+        }
+        return super.onStartCommand(intent, flags, startId);
     }
 
     @Override
@@ -97,9 +125,9 @@ public class ShakingSensor extends Service implements SensorEventListener {
 
 
                 if (speed > SHAKE_THRESHOLD) {
-                    SendTextMessageService send = new SendTextMessageService();
+                    SendTextMessageService send = new SendTextMessageService(getApplicationContext());
                     if (cnt == 0) {   //한 번 문자 보내고 그만 보냄
-                        send.sendSMS();
+                        send.sendSMS(1);
                         cnt++;
                         Toast.makeText(getApplicationContext(), "SOS문자가 전송되었습니다.", Toast.LENGTH_SHORT).show();
                     } else {
