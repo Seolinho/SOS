@@ -64,10 +64,14 @@ public class ShakingSensor extends Service implements SensorEventListener {
         if (accelerormeterSensor != null&&shakingOption.equals("Y"))
             sensorManager.registerListener(this, accelerormeterSensor,
                     SensorManager.SENSOR_DELAY_GAME);
+
         boolean loctionOn =pref.getBoolean("locationOn",false);
+
         if (loctionOn){
             Log.d("timer",loctionOn+"");
+
             long interval =pref.getLong("Interval",1800000);
+
             TimerTask timerTask = new TimerTask() {
                 @Override
                 public void run() {

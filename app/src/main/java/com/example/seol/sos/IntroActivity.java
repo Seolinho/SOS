@@ -42,15 +42,16 @@ public class IntroActivity extends AppCompatActivity {
             boolean login = pref.getBoolean("login",false);
 
 
-            if(!login) {
+           if(!login) {
                 Intent intentMain = new Intent(getApplicationContext(), LoginActivity.class);
                 startActivity(intentMain);
             }else {
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intent);
             }
-
-            finish();
+           /* Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+            startActivity(intent);
+            finish();*/
 
             //commit test 3
         }

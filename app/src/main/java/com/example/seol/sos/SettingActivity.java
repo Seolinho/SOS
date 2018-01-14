@@ -105,8 +105,11 @@ public class SettingActivity extends AppCompatActivity {
                 // 흔들기 옵션 처리 시작 부분
                 int shakingId = radioGroupForShaking.getCheckedRadioButtonId();
                 RadioButton shakingChecked = (RadioButton)findViewById(shakingId);
+
                 String shakingValue = shakingChecked.getText().toString().trim(); //흔들기 혹은 버튼클릭
+
                 editor.putBoolean("locationOn",swichChecked.isChecked());
+
                 if (m30.isChecked()){
                     editor.putLong("Interval",1800000);
 
