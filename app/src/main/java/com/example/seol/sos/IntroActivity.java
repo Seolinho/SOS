@@ -52,7 +52,7 @@ public class IntroActivity extends AppCompatActivity {
 
             finish();
 
-            //commit test 2
+            //commit test 3
         }
     }
 }
