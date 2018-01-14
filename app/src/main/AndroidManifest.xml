@@ -12,9 +12,9 @@
     <application
         android:name=".GlobalApplication"
         android:allowBackup="false"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_sos"
         android:label="SOS 긴급호출"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/ic_sos_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <meta-data
@@ -46,7 +46,7 @@
             />
         </activity>
 
-        <activity android:name=".VersionAskActivity" />
+
         <activity android:name=".MyinfoActivity"
                     android:label="MyinfoActivity">
             <meta-data
@@ -66,6 +66,13 @@
             android:name="android.support.PARENT_ACTIVITY"
             android:value=".SettingActivity"
             />
+        </activity>
+        <activity android:name=".VersionAskActivity"
+            android:label="VersionAskActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity"
+                />
         </activity>
     </application>
 

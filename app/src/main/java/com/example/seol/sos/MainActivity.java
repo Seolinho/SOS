@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity
     private static final String TAG = "googlemap_example";
     private static final int GPS_ENABLE_REQUEST_CODE = 2001;
     private static final int PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 2002;
-    private static final int UPDATE_INTERVAL_MS = 1000;  // 1초
+    private static final int UPDATE_INTERVAL_MS = 5000;  // 5초
     private static final int FASTEST_UPDATE_INTERVAL_MS = 500; // 0.5초
 
 
@@ -706,6 +706,10 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.setting) {
             menuClick = new Intent(getApplicationContext(), SettingActivity.class);
+            startActivity(menuClick);
+            return true;
+        } if (id == R.id.version) {
+            menuClick = new Intent(getApplicationContext(), VersionAskActivity.class);
             startActivity(menuClick);
             return true;
         }
