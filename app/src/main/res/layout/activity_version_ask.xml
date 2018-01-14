@@ -54,7 +54,7 @@
                 android:id="@+id/button"
                 android:layout_width="190dp"
                 android:layout_height="50dp"
-                android:background="@drawable/updatebutton"/>
+                android:background="@drawable/checkbutton"/>
         </LinearLayout>
 
     </LinearLayout>
