@@ -96,13 +96,13 @@
                 android:id="@+id/manualWheelChair"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="휠체어(수)" />
+                android:text="수동휠체어" />
 
             <RadioButton
                 android:id="@+id/autoWheelChair"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="휠체어(전)" />
+                android:text="전동휠체어" />
 
             <RadioButton
                 android:id="@+id/walker"

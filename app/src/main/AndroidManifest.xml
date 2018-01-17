@@ -2,13 +2,16 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.seol.sos">
 
-    <uses-permission android:name="android.permission.RECEIVE_SMS"/>
+    <uses-sdk android:minSdkVersion="3" />
+
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
     <uses-permission android:name="android.permission.SEND_SMS" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+
     <application
         android:name=".GlobalApplication"
         android:allowBackup="false"
@@ -20,10 +23,10 @@
         <meta-data
             android:name="com.kakao.sdk.AppKey"
             android:value="@string/kakao_app_key" />
-
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyAPNSf66j1fMqWB8LoGLFpTZyXm5MU1k0s" />
+
         <activity android:name=".IntroActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -36,47 +39,42 @@
         <service android:name=".ShakingSensor" />
 
         <activity android:name=".LoginActivity" />
-        <activity android:name=".NormalActivity"/>
+        <activity android:name=".NormalActivity" />
         <activity android:name=".KakaoSignupActivity" />
-        <activity android:name=".SettingActivity"
+        <activity
+            android:name=".SettingActivity"
             android:label="SettingActivity">
-        <meta-data
-            android:name="android.support.PARENT_ACTIVITY"
-            android:value=".MainActivity"
-            />
-        </activity>
-
-
-        <activity android:name=".MyinfoActivity"
-                    android:label="MyinfoActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".SettingActivity"
-            />
+                android:value=".MainActivity" />
         </activity>
-        <activity android:name=".UpdateMyInfo" >
-        <meta-data
-            android:name="android.support.PARENT_ACTIVITY"
-            android:value=".MyinfoActivity"
-            />
+        <activity
+            android:name=".MyinfoActivity"
+            android:label="MyinfoActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".SettingActivity" />
         </activity>
-        <activity android:name=".ProtectorCallActivity"
+        <activity android:name=".UpdateMyInfo">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MyinfoActivity" />
+        </activity>
+        <activity
+            android:name=".ProtectorCallActivity"
             android:label="ProtectorCallActivity">
-        <meta-data
-            android:name="android.support.PARENT_ACTIVITY"
-            android:value=".SettingActivity"
-            />
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".SettingActivity" />
         </activity>
-        <activity android:name=".VersionAskActivity"
+        <activity
+            android:name=".VersionAskActivity"
             android:label="VersionAskActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity"
-                />
+                android:value=".MainActivity" />
         </activity>
+        <activity android:name=".AgreeActivity"></activity>
     </application>
-
-    <uses-sdk android:minSdkVersion="3" />
-
 
 </manifest>
