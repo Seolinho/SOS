@@ -1,12 +1,18 @@
 package com.example.seol.sos;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 
 /**
@@ -36,22 +42,24 @@ public class IntroActivity extends AppCompatActivity {
     class loadingRun implements Runnable //쓰레드 만드는것
     {
         @Override
-        public void run(){
+        public void run() {
 
-            SharedPreferences pref = getSharedPreferences("pref",MODE_PRIVATE);
-            boolean login = pref.getBoolean("login",false);
+            SharedPreferences pref = getSharedPreferences("pref", MODE_PRIVATE);
+            boolean login = pref.getBoolean("login", false);
 
 
-           if(!login) {
+            if (!login) {
                 Intent intentMain = new Intent(getApplicationContext(), LoginActivity.class);
                 startActivity(intentMain);
-            }else {
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(intent);
+            }else{
+                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    startActivity(intent);
+                }
+
+
+                //commit test 3
             }
-
-
-            //commit test 3
         }
-    }
 }
+
+

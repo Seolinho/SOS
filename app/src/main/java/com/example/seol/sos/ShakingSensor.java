@@ -27,7 +27,7 @@ public class ShakingSensor extends Service implements SensorEventListener {
     private float lastZ;
 
     private float x, y, z;
-    private static final int SHAKE_THRESHOLD = 800;
+    private static final int SHAKE_THRESHOLD = 20000;
 
     private static final int DATA_X = SensorManager.DATA_X;
     private static final int DATA_Y = SensorManager.DATA_Y;

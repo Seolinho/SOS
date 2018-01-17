@@ -14,6 +14,8 @@ import android.location.Location;
 import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Build;
+import android.os.Handler;
+import android.os.Message;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
@@ -23,6 +25,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.ContextThemeWrapper;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -48,6 +51,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.kakao.auth.StringSet;
 
 import java.io.IOException;
+import java.lang.ref.WeakReference;
 import java.security.Permission;
 import java.util.List;
 import java.util.Locale;
@@ -89,11 +93,17 @@ public class MainActivity extends AppCompatActivity
 
     Intent shakingService;
 
+/*    String deviceVersion; //버전체크
+    String storeVersion; //버전체크
+    private BackgroundThread mBackgroundThread; //버전체크*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+/*        mBackgroundThread = new BackgroundThread(); //버전체크
+        mBackgroundThread.start(); //버전체크*/
 
         textView=findViewById(R.id.place);
 
@@ -170,6 +180,69 @@ public class MainActivity extends AppCompatActivity
 
 
     }
+    //버전체크
+   /* public class BackgroundThread extends Thread {
+        @Override
+        public void run() {
+
+            // 패키지 네임 전달
+            String storeVersion = MarketVersionChecker.getMarketVersion(getPackageName());
+
+            // 디바이스 버전 가져옴
+            try {
+                deviceVersion = getPackageManager().getPackageInfo(getPackageName(), 0).versionName;
+            } catch (PackageManager.NameNotFoundException e) {
+                e.printStackTrace();
+            }
+            deviceVersionCheckHandler.sendMessage(deviceVersionCheckHandler.obtainMessage());
+            // 핸들러로 메세지 전달
+        }
+    }
+
+    private final DeviceVersionCheckHandler deviceVersionCheckHandler = new DeviceVersionCheckHandler(this);
+
+    // 핸들러 객체 만들기
+    private static class DeviceVersionCheckHandler extends Handler {
+        private final WeakReference<MainActivity> mainActivityWeakReference;
+        public DeviceVersionCheckHandler(MainActivity mainActivity) {
+            mainActivityWeakReference = new WeakReference<MainActivity>(mainActivity);
+        }
+        @Override
+        public void handleMessage(Message msg) {
+            MainActivity activity = mainActivityWeakReference.get();
+            if (activity != null) {
+                activity.handleMessage(msg);
+                // 핸들메세지로 결과값 전달
+            }
+        }
+    }
+
+    private void handleMessage(Message msg) {
+        //핸들러에서 넘어온 값 체크
+        if (storeVersion.compareTo(deviceVersion) > 0) {
+            // 업데이트 필요
+
+            AlertDialog.Builder alertDialogBuilder =
+                    new AlertDialog.Builder(new ContextThemeWrapper(this, android.R.style.Theme_DeviceDefault_Light));
+            alertDialogBuilder.setTitle("업데이트");alertDialogBuilder
+                    .setMessage("새로운 버전이 있습니다.\n보다 나은 사용을 위해 업데이트 해 주세요.")
+                    .setPositiveButton("업데이트 바로가기", new DialogInterface.OnClickListener() {
+
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            // 구글플레이 업데이트 링크
+                        }
+                    });
+            AlertDialog alertDialog = alertDialogBuilder.create();
+            alertDialog.setCanceledOnTouchOutside(true);
+            alertDialog.show();
+
+        } else {
+            // 업데이트 불필요
+
+        }
+    }*/
+
     @Override
     public void onResume() {
 

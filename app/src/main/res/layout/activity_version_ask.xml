@@ -37,10 +37,10 @@
             android:gravity="center"/>
 
         <TextView
+            android:id="@+id/versionName"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="1.0"
             android:textSize="22sp"
             android:textStyle="bold"
             android:gravity="center"
@@ -51,7 +51,7 @@
             android:layout_height="60dp"
             android:gravity="center">
             <Button
-                android:id="@+id/button"
+                android:id="@+id/versionCheck"
                 android:layout_width="190dp"
                 android:layout_height="50dp"
                 android:background="@drawable/checkbutton"/>

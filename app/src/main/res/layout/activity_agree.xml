@@ -29,7 +29,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="개인정보 수집 및 이용 약관"
+                android:text="개인 정보 수집 이용 동의"
                 android:textSize="16sp"
                 android:textColor="#008B8B"
                 android:textStyle="bold"
@@ -42,16 +42,17 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text=""/>
+                    android:text="ㅇㅇㅇㅇㅇㅇ"/>
             </android.support.v4.widget.NestedScrollView>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
                 <CheckBox
+                    android:id="@+id/chkbox1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="위 약관애 동의합니다."
+                    android:text="개인정보수집 이용에 동의 합니다."
                     android:textColor="#FFFFFF"
                     android:textStyle="bold"
                     android:buttonTint="#FFFFFF"/>
@@ -65,7 +66,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="위치기반서비스 이용 약관"
+                android:text="위치기반 서비스 이용약관"
                 android:textSize="16sp"
                 android:textColor="#008B8B"
                 android:textStyle="bold"
@@ -85,9 +86,10 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
                 <CheckBox
+                    android:id="@+id/chkbox2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="위 약관애 동의합니다."
+                    android:text="위치기반 서비스 이용약관 동의 합니다."
                     android:textColor="#FFFFFF"
                     android:textStyle="bold"
                     android:buttonTint="#FFFFFF"/>
@@ -99,7 +101,7 @@
             android:layout_height="0dp"
             android:layout_weight="1">
             <CheckBox
-                android:id="@+id/checkBox"
+                android:id="@+id/chkbox3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/colorAccent"
@@ -117,6 +119,7 @@
         android:layout_weight="1"
         android:gravity="center">
         <Button
+            android:id="@+id/btn"
             android:layout_width="200dp"
             android:layout_height="60dp"
             android:background="@drawable/okbutton"/>
