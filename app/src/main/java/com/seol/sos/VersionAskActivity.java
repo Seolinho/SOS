@@ -1,4 +1,4 @@
-package com.example.seol.sos;
+package com.seol.sos;
 
 /**
  * Created by Seol on 2017-12-17.

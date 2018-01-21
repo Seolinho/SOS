@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="#008B8B"
-    tools:context="com.example.seol.sos.ProtectorCallActivity">
+    tools:context="com.seol.sos.ProtectorCallActivity">
 
     <!--아이디 설정 필요한 부분 있음.-->
 

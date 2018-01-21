@@ -1,4 +1,4 @@
-package com.example.seol.sos;
+package com.seol.sos;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -11,12 +11,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-/**
- * Created by Seol on 2018-01-15.
- */
-
 public class MarketVersionChecker {
-
 
     public static String getMarketVersion(String packageName) {
         try {
@@ -25,26 +20,21 @@ public class MarketVersionChecker {
                             + packageName).get();
             Elements Version = doc.select(".content");
 
-
             for (Element mElement : Version) {
                 if (mElement.attr("itemprop").equals("softwareVersion")) {
                     return mElement.text().trim();
                 }
             }
 
-
         } catch (IOException ex) {
             ex.printStackTrace();
         }
 
-
         return null;
     }
 
-
     public static String getMarketVersionFast(String packageName) {
         String mData = "", mVer = null;
-
 
         try {
             URL mUrl = new URL("https://play.google.com/store/apps/details?id="
@@ -52,20 +42,16 @@ public class MarketVersionChecker {
             HttpURLConnection mConnection = (HttpURLConnection) mUrl
                     .openConnection();
 
-
             if (mConnection == null)
                 return null;
-
 
             mConnection.setConnectTimeout(5000);
             mConnection.setUseCaches(false);
             mConnection.setDoOutput(true);
 
-
             if (mConnection.getResponseCode() == HttpURLConnection.HTTP_OK) {
                 BufferedReader mReader = new BufferedReader(
                         new InputStreamReader(mConnection.getInputStream()));
-
 
                 while (true) {
                     String line = mReader.readLine();
@@ -74,28 +60,22 @@ public class MarketVersionChecker {
                     mData += line;
                 }
 
-
                 mReader.close();
             }
 
-
             mConnection.disconnect();
-
 
         } catch (Exception ex) {
             ex.printStackTrace();
             return null;
         }
 
-
         String startToken = "softwareVersion\">";
         String endToken = "<";
         int index = mData.indexOf(startToken);
 
-
         if (index == -1) {
             mVer = null;
-
 
         } else {
             mVer = mData.substring(index + startToken.length(), index
@@ -103,8 +83,6 @@ public class MarketVersionChecker {
             mVer = mVer.substring(0, mVer.indexOf(endToken)).trim();
         }
 
-
         return mVer;
     }
 }
-

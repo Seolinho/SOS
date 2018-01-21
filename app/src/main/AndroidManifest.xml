@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.seol.sos">
+    package="com.seol.sos">
 
     <uses-permission android:name="android.permission.RECEIVE_SMS"/>
     <uses-permission android:name="android.permission.SEND_SMS" />
@@ -24,7 +24,7 @@
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyAPNSf66j1fMqWB8LoGLFpTZyXm5MU1k0s" />
+            android:value="AIzaSyCFXvUAz5iJ82jV8Fsn5vs8Hl3pneNFTnU" />
         <activity android:name=".IntroActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -37,7 +37,7 @@
         <service android:name=".ShakingSensor" />
 
         <activity android:name=".LoginActivity" />
-        <activity android:name=".NormalActivity"/>
+
         <activity android:name=".KakaoSignupActivity" />
         <activity
             android:name=".SettingActivity"

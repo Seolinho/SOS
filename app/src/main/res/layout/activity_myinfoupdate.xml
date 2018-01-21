@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="#008B8B"
-    tools:context="com.example.seol.sos.MyinfoActivity">
+    tools:context="com.seol.sos.MyinfoActivity">
 
     <GridLayout
         android:layout_width="match_parent"

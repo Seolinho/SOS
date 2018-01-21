@@ -1,4 +1,4 @@
-package com.example.seol.sos;
+package com.seol.sos;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -10,7 +10,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 /**
  * Created by Seol on 2017-12-17.

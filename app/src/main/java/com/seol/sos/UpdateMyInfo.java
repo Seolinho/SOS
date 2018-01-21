@@ -1,4 +1,4 @@
-package com.example.seol.sos;
+package com.seol.sos;
 
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
