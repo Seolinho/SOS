@@ -27,6 +27,7 @@ public class AgreeActivity extends AppCompatActivity {
         chk3 = (CheckBox)findViewById(R.id.chkbox3);
         btn = (Button)findViewById(R.id.btn);
 
+
         final AlertDialog.Builder alert = new AlertDialog.Builder(this);
         alert.setPositiveButton("확인", new DialogInterface.OnClickListener() {
             @Override
