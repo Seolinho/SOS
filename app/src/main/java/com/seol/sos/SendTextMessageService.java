@@ -38,19 +38,18 @@ public class SendTextMessageService {
         //String position = pref.getString("position","");
         String frame = pref.getString("frame", "");
         String type = pref.getString("typeOfDisable", "");
-
+        String name = pref.getString("userName","");
 
         String msg = "";
 
         if (flag == 1) {
-            msg = "테스트입니다." + "\n"
+            msg = name+"님이 위험에 처했습니다." + "\n"
                     + "현재 위치 : " + ShakingSensor.markerTitle + "\n" +
-                    "보장구 유형 : " + frame + "\n" +
-                    "장애 급수 : " + type;
+                    "장애 급수 : " + type + "\n" +
+                    "보장구 유형 : " + frame;
             send(msg, flag);
         } else {
-            msg = "테스트입니다." + "\n"
-                    + "현재 위치 : " + ShakingSensor.markerTitle;
+            msg = name+"님의 현재 위치는 : " + ShakingSensor.markerTitle + " 입니다.";
             send(msg, flag);
         }
 
